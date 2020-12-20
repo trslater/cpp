@@ -5,3 +5,5 @@ theme:
 
 markdown_extensions:
   - pymdownx.snippets
+  - pymdownx.tasklist:
+      custom_checkbox: true
