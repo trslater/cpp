@@ -10,22 +10,22 @@ I'll be following [these tutorials](http://www.cplusplus.com/doc/tutorial/).
 
 ### Introduction
 
--   [ ] Compilers
+-   [x] Compilers
 
 ### Basics of C++
 
--   [ ] Structure of a program
--   [ ] Variables and types
--   [ ] Constants
--   [ ] Operators
--   [ ] Basic Input/Output
+-   [x] Structure of a program
+-   [x] Variables and types
+-   [x] Constants
+-   [x] Operators
+-   [x] Basic Input/Output
 
 ### Program structure
 
--   [ ] Control Structures
--   [ ] Functions
--   [ ] Overloads and templates
--   [ ] Name visibility
+-   [x] Control Structures
+-   [x] Functions
+-   [x] Overloads and templates
+-   [x] Name visibility
 
 ### Compound data types
 
@@ -53,3 +53,9 @@ I'll be following [these tutorials](http://www.cplusplus.com/doc/tutorial/).
 ### C++ Standard Library
 
 -   [ ] Input/Output with files
+
+## Focus Areas
+
+-   [ ] Comma operator
+-   [ ] Types of values
+-   [ ] References/pointers
