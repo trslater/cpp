@@ -1,6 +1,6 @@
 CC=g++
-CFLAGS=-Wall -pedantic
-LDFLAGS=
+CFLAGS=-Wall -pedantic -std=c++20
+LDFLAGS=-lfmt
 
 bin/%: %.cpp
 	mkdir -p $(@D)

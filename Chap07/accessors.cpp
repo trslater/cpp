@@ -1,9 +1,9 @@
 // accessors.cpp by Bill Weinman [bw.org]
 // updated 2022-06-02
-#include <format>
+#include <fmt/core.h>
 #include <iostream>
 
-using std::format;
+using fmt::format;
 using std::cout;
 
 class A {

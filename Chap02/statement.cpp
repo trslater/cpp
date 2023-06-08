@@ -1,10 +1,10 @@
 // statement.cpp by Bill Weinman [bw.org]
 // updated 2022-05-19
-#include <format>
+#include <fmt/core.h>
 #include <iostream>
 
 using std::cout;
-using std::format;
+using fmt::format;
 
 int main() {
     int x;
