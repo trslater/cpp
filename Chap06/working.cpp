@@ -6,6 +6,19 @@
 using fmt::format;
 using std::cout;
 
-int main() {
-    cout << "Hello, World!\n";
+int factorial( int n )
+{
+    int product = 1;
+
+    while( n > 1 ) product *= n--;
+
+    return product;
+}
+
+int main()
+{
+    for( int i = 0; i < 10; ++i )
+    {
+        cout << format( "{}! = {}\n", i, factorial( i ) );
+    }
 }
