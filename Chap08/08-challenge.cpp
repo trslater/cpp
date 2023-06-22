@@ -1,20 +1,30 @@
-// 08-challenge.cpp by Bill Weinman [bw.org]
-// updated 2022-06-01
+// working.cpp by Bill Weinman [bw.org]
+// updated 2022-05-21
 #include <fmt/core.h>
 #include <iostream>
 
 using fmt::format;
 using std::cout;
 
-unsigned long factorial(unsigned long n) {
-    auto result = n;
-    while (n > 1) {
-        result *= --n;
-    }
-    return result;
+template<typename T>
+T factorial( T n )
+{
+    T product = 1;
+
+    while( n > 1 ) product *= n--;
+
+    return product;
 }
 
-int main() {
-    unsigned long n {5};
-    cout << format("Factorial of {} is {}\n", n, factorial(n));
+int main()
+{
+    for( int i = 0; i < 10; ++i )
+    {
+        cout << format( "  Int: {}! = {}\n", i, factorial( i ) );
+        cout << format( "Float: {}! = {:.1f}\n", i, factorial( ( double )i ) );
+        cout << format( "\n" );
+    }
+    
+    double x { 3.1 };
+    cout << format( "Float: {}! = {:.3f}\n", x, factorial( x ) );
 }
