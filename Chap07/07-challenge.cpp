@@ -23,10 +23,6 @@ public:
     string str() const;         // return a formatted STL string
     string raw_str() const;     // return a non-reduced STL string
     Rational& operator = (const Rational&);  // assignment
-    Rational operator + (const Rational&) const;
-    Rational operator - (const Rational&) const;
-    Rational operator * (const Rational&) const;
-    Rational operator / (const Rational&) const;
 };
 
 Rational Rational::reduce() const {
@@ -58,6 +54,10 @@ string Rational::raw_str() const {
     return std::to_string(n) + "/" + std::to_string(d);
 }
 
+Rational::~Rational() {
+    n = 0; d = 1;
+}
+
 Rational& Rational::operator = (const Rational& rhs) {
     if (this != &rhs) {
         n = rhs.numerator();
@@ -66,24 +66,28 @@ Rational& Rational::operator = (const Rational& rhs) {
     return *this;
 }
 
-Rational Rational::operator + (const Rational& rhs) const {
-    return Rational((n * rhs.d) + (d * rhs.n), d * rhs.d);
+Rational operator + (const Rational& lhs, const Rational& rhs) {
+    return Rational(
+        (lhs.numerator() * rhs.denominator()) + (lhs.denominator() * rhs.numerator()),
+        lhs.denominator() * rhs.denominator());
 }
 
-Rational Rational::operator - (const Rational& rhs) const {
-    return Rational((n * rhs.d) - (d * rhs.n), d * rhs.d);
+Rational operator - (const Rational& lhs, const Rational& rhs) {
+    return Rational(
+        (lhs.numerator() * rhs.denominator()) - (lhs.denominator() * rhs.numerator()),
+        lhs.denominator() * rhs.denominator());
 }
 
-Rational Rational::operator * (const Rational& rhs) const {
-    return Rational(n * rhs.n, d * rhs.d);
+Rational operator * (const Rational& lhs, const Rational& rhs) {
+    return Rational(
+        lhs.numerator() * rhs.numerator(),
+        lhs.denominator() * rhs.denominator());
 }
 
-Rational Rational::operator / (const Rational& rhs) const {
-    return Rational(n * rhs.d, d * rhs.n);
-}
-
-Rational::~Rational() {
-    n = 0; d = 1;
+Rational operator / (const Rational& lhs, const Rational& rhs) {
+    return Rational(
+        lhs.numerator() * rhs.denominator(),
+        lhs.denominator() * rhs.numerator());
 }
 
 int main() {
