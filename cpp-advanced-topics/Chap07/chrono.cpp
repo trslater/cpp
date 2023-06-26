@@ -1,13 +1,13 @@
 // chrono.cpp by Bill Weinman [bw.org]
 // as of 2022-10-30
-#include <format>
+#include <fmt/core.h>
 #include <string>
 #include <chrono>
 #include <ratio>
 
 // format-style print()
 constexpr void print(const std::string_view str_fmt, auto&&... args) {
-    fputs(std::vformat(str_fmt, std::make_format_args(args...)).c_str(), stdout);
+    fputs(fmt::vformat(str_fmt, fmt::make_format_args(args...)).c_str(), stdout);
 }
 
 constexpr auto newline = []{ print("\n"); };

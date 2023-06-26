@@ -1,6 +1,6 @@
 // container-02.cpp by Bill Weinman [bw.org]
 // updated 2022-10-26
-#include <format>
+#include <fmt/core.h>
 #include <string>
 #include <vector>
 #include <initializer_list>
@@ -9,7 +9,7 @@ using std::string;
 
 // format-style print()
 constexpr void print(const std::string_view str_fmt, auto&&... args) {
-    fputs(std::vformat(str_fmt, std::make_format_args(args...)).c_str(), stdout);
+    fputs(fmt::vformat(str_fmt, fmt::make_format_args(args...)).c_str(), stdout);
 }
 
 template<typename T>

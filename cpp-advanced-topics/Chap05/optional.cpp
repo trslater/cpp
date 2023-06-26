@@ -1,11 +1,11 @@
 // optional.cpp by Bill Weinman [bw.org]
 // updated 2022-08-30
-#include <format>
+#include <fmt/core.h>
 #include <optional>
 
 // format-style print()
 constexpr void print(const std::string_view str_fmt, auto&&... args) {
-    fputs(std::vformat(str_fmt, std::make_format_args(args...)).c_str(), stdout);
+    fputs(fmt::vformat(str_fmt, fmt::make_format_args(args...)).c_str(), stdout);
 }
 
 struct return_status {

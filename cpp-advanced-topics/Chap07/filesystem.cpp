@@ -1,6 +1,6 @@
 // filesystem.cpp by Bill Weinman [bw.org]
 // as of 2022-10-30
-#include <format>
+#include <fmt/core.h>
 #include <vector>
 #include <filesystem>
 
@@ -8,11 +8,11 @@ namespace fs = std::filesystem;
 
 // format-style print()
 constexpr void print(const std::string_view str_fmt, auto&&... args) {
-    fputs(std::vformat(str_fmt, std::make_format_args(args...)).c_str(), stdout);
+    fputs(fmt::vformat(str_fmt, fmt::make_format_args(args...)).c_str(), stdout);
 }
 
 template<>
-struct std::formatter<fs::path>: std::formatter<int> {
+struct fmt::formatter<fs::path>: fmt::formatter<int> {
     template<typename Context>
     auto format(const fs::path& p, Context& ctx) {
         return format_to(ctx.out(), "{}", p.string());

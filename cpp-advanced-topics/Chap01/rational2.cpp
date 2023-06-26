@@ -1,13 +1,13 @@
 // rational2.cpp by Bill Weinman [bw.org]
 // updated 2022-10-24
-#include <format>
+#include <fmt/core.h>
 #include <string>
 
 using std::string;
 
 // format-style print()
 constexpr void print(const std::string_view str_fmt, auto&&... args) {
-    fputs(std::vformat(str_fmt, std::make_format_args(args...)).c_str(), stdout);
+    fputs(fmt::vformat(str_fmt, fmt::make_format_args(args...)).c_str(), stdout);
 }
 
 const std::string nanstr {"[NAN]"};
@@ -88,7 +88,7 @@ Rational::~Rational() {
 
 // formatter specialization
 template<>
-struct std::formatter<Rational>: std::formatter<unsigned> {
+struct fmt::formatter<Rational>: fmt::formatter<unsigned> {
     template<typename FormatContext>
     auto format(const Rational& o, FormatContext& ctx) {
         return format_to(ctx.out(), "{}", o.str());

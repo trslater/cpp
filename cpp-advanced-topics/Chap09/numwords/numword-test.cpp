@@ -1,15 +1,15 @@
 // numword-test.cpp by Bill Weinman [bw.org]
 // updated 2022-09-06
-#include <format>
+#include <fmt/core.h>
 #include "numword.h"
 
 // format-style print()
 constexpr void print(const std::string_view str_fmt, auto&&... args) {
-    fputs(std::vformat(str_fmt, std::make_format_args(args...)).c_str(), stdout);
+    fputs(fmt::vformat(str_fmt, fmt::make_format_args(args...)).c_str(), stdout);
 }
 
 template<>
-struct std::formatter<bw::numword>: std::formatter<unsigned> {
+struct fmt::formatter<bw::numword>: fmt::formatter<unsigned> {
     template<typename FormatContext>
     auto format(const bw::numword& nw, FormatContext& ctx) {
         bw::numword _nw{nw};

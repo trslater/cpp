@@ -1,6 +1,6 @@
 // atomic.cpp by Bill Weinman [bw.org]
 // as of 2022-10-30
-#include <format>
+#include <fmt/core.h>
 #include <string>
 #include <list>
 #include <thread>
@@ -15,7 +15,7 @@ constexpr int max_threads {100};
 
 // format-style print()
 constexpr void print(const std::string_view str_fmt, auto&&... args) {
-    fputs(std::vformat(str_fmt, std::make_format_args(args...)).c_str(), stdout);
+    fputs(fmt::vformat(str_fmt, fmt::make_format_args(args...)).c_str(), stdout);
 }
 
 std::string make_commas(const uint64_t& num) {

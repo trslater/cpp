@@ -1,10 +1,10 @@
 // incr-decr.cpp by Bill Weinman [bw.org]
 // as of 2022-10-21
-#include <format>
+#include <fmt/core.h>
 
 // format-style print()
 constexpr void print(const std::string_view str_fmt, auto&&... args) {
-    fputs(std::vformat(str_fmt, std::make_format_args(args...)).c_str(), stdout);
+    fputs(fmt::vformat(str_fmt, fmt::make_format_args(args...)).c_str(), stdout);
 }
 
 class num {
@@ -53,7 +53,7 @@ num num::operator-- (int) {
 
 // formatter specialization
 template<>
-struct std::formatter<num>: std::formatter<unsigned> {
+struct fmt::formatter<num>: fmt::formatter<unsigned> {
     template<typename FormatContext>
     auto format(const num& o, FormatContext& ctx) {
         return format_to(ctx.out(), "{}", o.getvalue());
